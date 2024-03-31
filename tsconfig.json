@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2022",
+    "types": ["mocha", "node", "reflect-metadata"],    
+    "allowJs": true,
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json",
+    "./tests/**/*",
+    "./tests/**/*.json"
+  ]
+}
