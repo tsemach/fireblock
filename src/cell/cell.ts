@@ -1,4 +1,5 @@
 import { ReactorEvent } from "../reactor/reactor-event"
+import { Readline } from "../types"
 import { CellNode } from "./cell-node"
 
 export class Cell {  
@@ -22,7 +23,12 @@ export class Cell {
     return { index: this.index, value: this.expression.cal }
   }
 
-  print() {
+  print(rl?: Readline) {
+    if (rl) {
+      rl.write(`[${this.index}: ${this.expression.cal()}], `)  
+
+      return
+    }
     process.stdout.write(`[${this.index}: ${this.expression.cal()}], `)
   }
 

@@ -25,14 +25,19 @@ function main() {
   console.log(" q. Quite the program")
   console.log("")
   console.log("# ")
-
+  
   const rl = readline.createInterface(process.stdin, process.stdout);
   rl.setPrompt('# ');
   rl.prompt();
 
   rl.on('line', function(line) {
-    if (line === "quite" || line === 'q') rl.close();
-    console.log('line', line)    
+    if (line === "quite" || line === 'q') rl.close();    
+
+    switch(line) {
+    case 'a': reactor.print(rl); rl.write('\n'); break;
+    // case 'b': reactor.print(); break;
+    }
+
     rl.prompt();
   }).on('close',function(){
     process.exit(0);
