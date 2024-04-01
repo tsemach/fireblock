@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { Reactor } from "./reactor"
+import { Reactor } from "./reactor/reactor"
 
 function usage() {
   console.log("")
@@ -32,7 +32,7 @@ function main() {
 
   rl.on('line', function(line) {
     if (line === "quite" || line === 'q') rl.close();
-      
+    console.log('line', line)    
     rl.prompt();
   }).on('close',function(){
     process.exit(0);
