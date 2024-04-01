@@ -19,6 +19,11 @@ export class Cell {
     ReactorEvent.instance.emit(this.index.toString(), this.expression.cal())
   }
 
+  set(value: string) {
+    this.expression = new CellNode(value)
+    ReactorEvent.instance.emit(this.index.toString(), value)
+  }
+
   get() {
     return { index: this.index, value: this.expression.cal }
   }

@@ -27,7 +27,7 @@ export class CellNode {
 
     return this
   }
-
+  
   cal() {
     if ( ! this.hasChilds() ) {
       return parseInt(this.value)
@@ -83,7 +83,7 @@ export class CellNode {
   }  
 
   set value(_value: string) {    
-    this._value = _value
+    this._value = _value    
   }  
 
   print(indent = 0) {

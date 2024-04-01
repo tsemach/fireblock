@@ -20,6 +20,10 @@ export class Reactor {
     })
   }
   
+  set(index: number, value: string) {
+    this.cells[index].set(value)
+  }
+
   print(rl?: Readline) {
     for (const cell of this.cells) {
       cell.print(rl)

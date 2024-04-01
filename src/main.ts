@@ -32,10 +32,11 @@ function main() {
 
   rl.on('line', function(line) {
     if (line === "quite" || line === 'q') rl.close();    
+    const args = line.split(' ')
 
-    switch(line) {
+    switch(args[0]) {
     case 'a': reactor.print(rl); rl.write('\n'); break;
-    // case 'b': reactor.print(); break;
+    case 'b': reactor.set(parseInt(args[1]), args[2]); rl.write(`Cell #${args[1]} changed to ${args[2]}\n`);  break;    
     }
 
     rl.prompt();

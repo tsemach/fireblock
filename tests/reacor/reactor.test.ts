@@ -30,4 +30,17 @@ describe('Test Reactor API', function() {
     reactor.print()
   })
 
+  it('reactor.test.ts: test reactor change value cell', () => {
+    const reactor = new Reactor()
+    const filename = 'fireblock.change'
+    
+    console.log(__dirname)
+    fs.writeFileSync(filename, '2, ={0}+1*5')
+
+    reactor.load(filename)
+    reactor.print()
+
+    reactor.set(0, '3')
+    reactor.print()
+  })
 })
