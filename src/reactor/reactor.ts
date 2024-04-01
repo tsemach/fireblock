@@ -12,7 +12,7 @@ export class Reactor {
   load(filename: string) {
     const content = fs.readFileSync(filename).toString()    
     this.cells = new Parser().parse(content)    
-
+        
     this.cells.forEach(cell => {
       if ( ! cell.isComputed() ) {
         cell.emit()
@@ -20,6 +20,12 @@ export class Reactor {
     })
   }
   
+  resolve() {
+    for (const call of this.cells) {
+
+    }
+  }
+
   set(index: number, value: string) {
     this.cells[index].set(value)
   }

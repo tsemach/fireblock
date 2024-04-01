@@ -3,11 +3,13 @@ import { ReactorEvent } from "../reactor/reactor-event"
 
 export class CellNode {
   private _value: string
+  private _link: number
   private ln: CellNode
   private rn: CellNode
 
   constructor(value: string) {
     this._value = value
+    this._link = -1
   }
 
   add(node: CellNode) {
@@ -21,6 +23,7 @@ export class CellNode {
     if (this.isCurly()) {
       this.on(this.value)
       this._value = `link:${this.value}`
+      this._link = parseInt(this.value)
       this.ln = undefined
       this.rn = undefined
     }
@@ -45,6 +48,7 @@ export class CellNode {
 
   on(index: string) {
     ReactorEvent.instance.on(index, (value) => { this._value = value })
+    this._link = -1
   }
 
   private hasChilds() {
@@ -52,18 +56,28 @@ export class CellNode {
   }
 
   isLink() {    
-    if (typeof this.value !== 'string') {
-      return false
-    }
-
-    if (this.value.startsWith('link')) {
+    if (this._link > -1) {
       return true
-    } 
+    }
+    
     if (this.hasChilds()) {
       return this.ln.isLink() || this.rn.isLink()
     }
     
     return false
+
+    // if (typeof this.value !== 'string') {
+    //   return false
+    // }
+
+    // if (this.value.startsWith('link')) {
+    //   return true
+    // } 
+    // if (this.hasChilds()) {
+    //   return this.ln.isLink() || this.rn.isLink()
+    // }
+    
+    // return false
   }
 
   isLeaf() {
